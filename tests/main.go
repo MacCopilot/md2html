@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/yuin/goldmark/text"
 	md "github.com/zizdlp/md2html/markdown/render"
@@ -16,7 +17,7 @@ func convertMd2Html(src_path string,des_path string){
 	data, err := os.ReadFile(src_path)
 	if err != nil {
 		fmt.Println("read file failed:", err)
-		return
+		panic(err)
 	}
 
 	markdown := md.GetMarkdownConfig()
@@ -33,11 +34,13 @@ func convertMd2Html(src_path string,des_path string){
 	}
 	markdown.Renderer().Render(&b, data, doc) // 2.渲染正式内容
 	if err != nil {
-		return
+		fmt.Println("convert html failed:", err)
+		panic(err)
 	}
 	err = os.WriteFile(des_path, b.Bytes(), 0644)
 	if err != nil {
-		return
+		fmt.Println("write html to file failed:", err)
+		panic(err)
 	}
 }
 
@@ -70,9 +73,16 @@ func copyFile(src, dest string) error {
 }
 
 func main() {
-	// 指定源目录和目标目录路径
-	srcDir := "tests/src"
-	destDir := "tests/des"
+	// 记录开始时间
+	startTime := time.Now()
+	// 从命令行获取源目录和目标目录
+	if len(os.Args) != 3 {
+		fmt.Println("请提供源目录和目标目录参数")
+		return
+	}
+	srcDir := os.Args[1]
+	destDir := os.Args[2]
+
 	// 遍历源目录
 	err := filepath.Walk(srcDir, func(srcPath string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -99,53 +109,22 @@ func main() {
 				err = copyFile(srcPath, destPath)
 				if err != nil {
 					fmt.Printf("复制文件 %s 到 %s 时发生错误：%v\n", srcPath, destPath, err)
-				} else {
-					fmt.Printf("成功复制文件 %s 到 %s\n", srcPath, destPath)
+					panic(err)
 				}
 			}
-
-
 		}
-
 		return nil
 	})
 
 	if err != nil {
 		fmt.Println("遍历源目录时发生错误:", err)
+		panic(err)
 	}
-	// // 遍历源目录
-	// err := filepath.Walk(srcDir, func(srcPath string, info os.FileInfo, err error) error {
-	// 	if err != nil {
-	// 		return err
-	// 	}
 
-	// 	// 检查是否为文件
-	// 	if !info.IsDir() {
-	// 		// 构建目标路径
-	// 		destPath := filepath.Join(destDir, info.Name())
+	// 记录结束时间
+	endTime := time.Now()
 
-	// 		// 如果是以".md"结尾的文件，修改目标路径后缀为".html"
-	// 		if strings.HasSuffix(info.Name(), ".md") {
-	// 			srcPath:= filepath.Join(destDir, strings.TrimSuffix(info.Name(), ".md")+".html")
-	// 			destPath = filepath.Join(destDir, strings.TrimSuffix(info.Name(), ".md")+".html")
-	// 			convertMd2Html(srcPath,destPath)
-
-	// 		}
-			
-	// 		// 复制文件
-	// 		err := copyFile(srcPath, destPath)
-	// 		if err != nil {
-	// 			fmt.Printf("复制文件 %s 到 %s 时发生错误：%v\n", srcPath, destPath, err)
-	// 		} else {
-	// 			fmt.Printf("成功复制文件 %s 到 %s\n", srcPath, destPath)
-	// 		}
-	// 	}
-
-	// 	return nil
-	// })
-
-	// if err != nil {
-	// 	fmt.Println("遍历源目录时发生错误:", err)
-	// }
+	// 计算耗时并输出
+	elapsedTime := endTime.Sub(startTime)
+	fmt.Printf("总耗时：%s\n", elapsedTime)
 }
-
