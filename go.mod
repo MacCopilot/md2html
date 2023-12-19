@@ -6,7 +6,6 @@ require (
 	github.com/alecthomas/chroma/v2 v2.12.0
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f
-	github.com/rakyll/statik v0.1.7
 	github.com/rs/zerolog v1.31.0
 	github.com/spf13/viper v1.18.2
 	github.com/stefanfritsch/goldmark-admonitions v1.1.1
