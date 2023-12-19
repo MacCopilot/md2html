@@ -7,10 +7,8 @@ import (
 	"strings"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/rakyll/statik/fs"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
-	_ "github.com/zizdlp/md2html/statik"
 	"github.com/zizdlp/md2html/util"
 )
 
@@ -40,19 +38,9 @@ func CustomMatcher(key string) (string, bool) {
 func runStaticServer(config util.Config) {
 	mux := http.NewServeMux()
 
-	statikFS, err := fs.New()
-	if err != nil {
-		log.Fatal().Msg("cannot create statik fs")
-	}
-
-	// Serve static files from the "statik" directory
-	swaggerHandler := http.StripPrefix("/statik/", http.FileServer(statikFS))
-	mux.Handle("/statik/", allowCORS(swaggerHandler))
-
 	// Serve static files from the "/tmp/wiki/" directory
-	fileServer := http.FileServer(http.Dir("/tmp/wiki/"))
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-
+	fileServer := http.FileServer(http.Dir("des/"))
+	mux.Handle("/", http.StripPrefix("/", fileServer))
 	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {
 		log.Fatal().Msgf("cannot create listener: %s", err)
@@ -64,6 +52,7 @@ func runStaticServer(config util.Config) {
 		log.Fatal().Msgf("cannot start static file server: %s", err)
 	}
 }
+
 
 
 func allowCORS(h http.Handler) http.Handler {
@@ -89,3 +78,9 @@ func preflightHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Methods", strings.Join(methods, ","))
 	log.Info().Msgf("preflightHandler at %s", r.URL.Path)
 }
+
+
+
+
+
+
