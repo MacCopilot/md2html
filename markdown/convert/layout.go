@@ -47,7 +47,7 @@ func GenLayout(prefix int, path string, layout *Layout) error {
 			current_layout := Layout{
 				Title:      f.Name(),
 				Isdir:      false,
-				Href:       left_path + f.Name(),
+				Href:       left_path +   strings.TrimSuffix(f.Name(), ".md"),
 			}
 			layout.Sublayouts = append(layout.Sublayouts, current_layout)
 		}
