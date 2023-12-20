@@ -14,7 +14,7 @@ func ConvertMd2Json(src_path string,des_path string){
 	data, err := os.ReadFile(src_path)
 	if err != nil {
 		fmt.Println("read file failed:", err)
-		panic(err)
+		return
 	}
 
 	markdown := md.GetMarkdownConfig()
@@ -35,7 +35,7 @@ func ConvertMd2Json(src_path string,des_path string){
 	markdown.Renderer().Render(&b, data, doc) // 2.渲染正式内容
 	if err != nil {
 		fmt.Println("convert html failed:", err)
-		panic(err)
+		return
 	}
 	htmlTable := table.String()
 	htmlContent := b.String()
@@ -49,13 +49,13 @@ func ConvertMd2Json(src_path string,des_path string){
 	jsonString, err := json.Marshal(jsonObject)
 	if err != nil {
 		fmt.Println("write to json failed:", err)
-		panic(err)
+		return
 	}
 
 	// 写入 JSON 字符串到文件
 	err = os.WriteFile(des_path, jsonString, 0644)
 	if err != nil {
 		fmt.Println("write html to file failed:", err)
-		panic(err)
+		return
 	}
 }

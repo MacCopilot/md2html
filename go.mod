@@ -13,7 +13,10 @@ require (
 	go.abhg.dev/goldmark/toc v0.9.0
 )
 
+require gopkg.in/fsnotify.v1 v1.4.7 // indirect
+
 require (
+	github.com/dietsche/rfsnotify v0.0.0-20200716145600-b37be6e4177f
 	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
