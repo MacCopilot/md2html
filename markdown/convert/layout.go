@@ -110,7 +110,7 @@ func RenderLayout(path string, outputPath string) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(outputPath + "/layout.json", []byte(stringLayout), 0644)
+	err = os.WriteFile(outputPath + "/layout.layout", []byte(stringLayout), 0644)
 	if err != nil {
 		return err
 	}

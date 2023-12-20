@@ -69,7 +69,12 @@ func main() {
 
 			// 如果是以".md"结尾的文件，修改目标路径后缀为".json"
 			if strings.HasSuffix(info.Name(), ".md") {
-				destPath = filepath.Join(destDir, relPath[:len(relPath)-len(".md")]+".json")
+				destPath = filepath.Join(destDir, relPath[:len(relPath)-len(".md")]+".wiki")
+				// 确保目标目录及其上级目录存在
+				err = os.MkdirAll(filepath.Dir(destPath), os.ModePerm)
+				if err != nil {
+					return err
+				}
 				convert.ConvertMd2Json(srcPath,destPath)
 			}else {
 				// 复制文件
