@@ -1,4 +1,4 @@
-// import { backend_base_url, use_https_url } from "@/utils/env_variable";
+import { backend_url } from "@/utils/env_variable";
 import WikiInfo from "@/components/WikiInfo";
 async function getMarkdownByHrefServer({href}:{href: string}) {
   const decodedHref = decodeURIComponent(href);
@@ -6,7 +6,7 @@ async function getMarkdownByHrefServer({href}:{href: string}) {
   const constructedHref = hrefArray.join('/');
   const uniqueIdentifier = Date.now(); // 或者使用其他唯一标识符
 
-  const url = `http://localhost:8080/${constructedHref}.wiki?uid=${uniqueIdentifier}`;
+  const url = `${backend_url}/${constructedHref}.wiki?uid=${uniqueIdentifier}`;
   let options = {
     method: "POST",
     headers: {

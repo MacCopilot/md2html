@@ -1,6 +1,7 @@
 "use client";
 import SubMenu from "./SubMenu";
 import { useContext, useEffect, useState } from "react";
+import { backend_url } from "@/utils/env_variable";
 import { MenuStruct } from "@/types/interface";
 import { Transition } from "@headlessui/react";
 import { SideBarContext } from "@/providers/SideBarProvider";
@@ -13,7 +14,7 @@ export async function getPublicRepoLayout() {
       "Content-Type": "application/json",
     },
   };
-  const url = `http://localhost:8080/layout.layout`
+  const url = `${backend_url}/layout.layout`
   const response = await fetch(url, options);
   const data = await response.json();
   return data;

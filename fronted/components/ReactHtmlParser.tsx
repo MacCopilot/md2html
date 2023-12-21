@@ -6,6 +6,7 @@ import {
   Element,
   HTMLReactParserOptions,
 } from "html-react-parser";
+import { backend_url } from "@/utils/env_variable";
 import Link from "next/link";
 import parse from "html-react-parser";
 import { mathjax_config } from "@/utils/mathjax_config";
@@ -399,7 +400,7 @@ export default function ReactHtmlParser({
             <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
           );
         } else {
-          return <img className="w-full my-4 rounded-md" src={"http://localhost:8080/"+prefixPath + "/" + domNode.attribs.src} />
+          return <img className="w-full my-4 rounded-md" src={`${backend_url}/`+prefixPath + "/" + domNode.attribs.src} />
         }
       }
       if (domNode instanceof Element && domNode.name === "del") {
