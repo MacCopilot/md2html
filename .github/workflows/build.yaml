@@ -1,0 +1,67 @@
+name: build images
+
+on: push
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push aifusion next
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}:aifusion_next"
+          file: aifusion_next.Dockerfile
+          build-args: |
+            NEXT_PUBLIC_HOME_URL=https://aifusion.zizdlp.com/
+            NEXT_PUBLIC_BACKEND_URL=https://aifusion-api.zizdlp.com/
+            NEXT_PUBLIC_SERVER_URL=https://aifusion-api.zizdlp.com/
+            NEXT_PUBLIC_WEBSOCKET_URL=aifusion-websocket.zizdlp.com
+            NEXT_PUBLIC_USE_HTTPS=true
+            NEXT_PUBLIC_GEO_KEY=340460ae63bf44edbe9210420a14534e
+            NEXTAUTH_URL=https://aifusion.zizdlp.com/
+          push: true
+          tags: zizdlp/aifusion_next:latest
+      -
+        name: Build and push aifusion backend
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}"
+          file: "./build/aifusion_backend.Dockerfile"
+          push: true
+          tags: zizdlp/aifusion_backend:latest
+      -
+        name: Build and push aiwiki next
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}:aiwiki_next"
+          file: aiwiki_next.Dockerfile
+          build-args: |
+            NEXT_PUBLIC_HOME_URL=https://zizdlp.com/
+            NEXT_PUBLIC_BACKEND_URL=https://api.zizdlp.com/
+            NEXT_PUBLIC_SERVER_URL=https://api.zizdlp.com/
+            NEXT_PUBLIC_WEBSOCKET_URL=websocket.zizdlp.com
+            NEXT_PUBLIC_USE_HTTPS=true
+            NEXT_PUBLIC_GEO_KEY=340460ae63bf44edbe9210420a14534e
+            NEXTAUTH_URL=https://zizdlp.com/
+          push: true
+          tags: zizdlp/aiwiki_next:latest
+      -
+        name: Build and push aiwiki backend
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}"
+          file: "./build/aiwiki_backend.Dockerfile"
+          push: true
+          tags: zizdlp/aiwiki_backend:latest

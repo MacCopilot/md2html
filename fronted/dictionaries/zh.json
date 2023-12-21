@@ -1,0 +1,89 @@
+{
+  "server-component": {
+    "welcome": "欢迎"
+  },
+  "counter": {
+    "increment": "加",
+    "decrement": "减"
+  },
+  "login-page":{
+    "login":"登录",
+    "signin-message":"已有账号，请登录",
+    "register":"注册",
+    "Forget Password?":"忘记密码?",
+    "need an account?":"需要一个账号?"
+  },
+  "login-form":{
+    "login":"登录",
+    "email":"邮箱",
+    "password":"密码"
+  },
+  "forget-form":{
+    "login":"登录",
+    "email":"邮箱",
+    "password":"密码",
+    "sendEmail":"发送邮件",
+    "notReceiveEmail":"未收到邮件?",
+    "needAnAccount":"需要一个账号?",
+    "register":"注册"
+  },
+  "register-form":{
+    "username":"用户名",
+    "register":"注册",
+    "login":"登录",
+    "email":"邮箱",
+    "password":"密码",
+    "cpassword":"再次输入密码确认"
+  },
+  "register-page":{
+    "login":"登录",
+    "signin-message":"已有账号，请登录",
+    "register":"注册",
+    "Forget Password?":"忘记密码?",
+    "already own an account?":"已经有账号了?"
+  },
+  "home-page":{
+    "Light/Night mode":"日/夜 模式",
+    "Seamlessly":"无缝切换",
+    "responsive design":"响应式设计",
+    "Mobile-first":"移动端优先",
+    "Free GPU Usage, AI Generates Exquisite Images":"邻信: 蓝牙聊天的全新维度",
+    "Register Now and Receive Free Prompts to Generate Exquisite Images as You Describe":"在nextwiki中，我们将蓝牙聊天推向了一个全新的高度。无论你是在Mac还是iOS设备上，我们通过先进的SwiftUI技术为你提供了一个流畅、便捷、无缝的通信平台。",
+    "Register Now":"立即注册",
+    "Sign In":"登录",
+    "full":"全文",
+    "text search":"检索",
+    "All rights reserved.":"保留所有权利",
+    "Friends Link":"友链",
+    "Community":"社交媒体",
+    "Core Concepts":"特性",
+    "Getting Started":"开始使用",
+    "Responsive Design":"响应式设计",
+    "Quick response":"快速响应",
+    "Dark Mode":"夜间模式",
+    "Prerequisite":"先决条件",
+    "How to use":"如何使用"
+  },
+  "ios-page":{
+    "Light/Night mode":"日/夜 模式",
+    "Seamlessly":"无缝切换",
+    "creates a smooth and silky experience.":"造就丝滑体验",
+    "Swift native ":"Swift原生",
+    "Want a smoother experience on your iPhone?":"想要在你的iphone上获得更优质的体验?",
+    "Coming soon, Try the web version first.":"即将推出,先试试网页端",
+    "Register Now":"立即注册",
+    "Sign In":"登录",
+    "full":"全文",
+    "text search":"检索",
+    "All rights reserved.":"保留所有权利",
+    "Friends Link":"友链",
+    "Community":"社交媒体",
+    "Core Concepts":"特性",
+    "Getting Started":"开始使用",
+    "Responsive Design":"响应式设计",
+    "Quick response":"快速响应",
+    "Dark Mode":"夜间模式",
+    "Prerequisite":"先决条件",
+    "How to use":"如何使用"
+  }
+}
