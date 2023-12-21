@@ -1,0 +1,89 @@
+{
+  "server-component": {
+    "welcome": "Welcome"
+  },
+  "counter": {
+    "increment": "Increment",
+    "decrement": "Decrement"
+  },
+  "login-page":{
+    "login":"Log In",
+    "signin-message":"sign in if you own an account",
+    "register":"Register",
+    "Forget Password?":"Forget Password?",
+    "need an account?":"need an account?"
+  },
+  "login-form":{
+    "login":"Log In",
+    "email":"email",
+    "password":"password"
+  },
+  "forget-form":{
+    "login":"Log In",
+    "email":"email",
+    "password":"password",
+    "sendEmail":"Send Email",
+    "notReceiveEmail":"not receive email?",
+    "needAnAccount":"need an account?",
+    "register":"Register"
+  },
+  "register-form":{
+    "username":"Username",
+    "register":"Register",
+    "login":"Log In",
+    "email":"email",
+    "password":"password",
+    "cpassword":"confirm password"
+  },
+  "register-page":{
+    "login":"Log In",
+    "signin-message":"sign in if you own an account",
+    "register":"Register",
+    "Forget Password?":"Forget Password?",
+    "already own an account?":"already own an account?"
+  },
+  "home-page":{
+    "Light/Night mode":"Light/Night mode",
+    "Seamlessly":"Seamlessly",
+    "responsive design":"responsive design",
+    "Mobile-first":"Mobile-first",
+    "Free GPU Usage, AI Generates Exquisite Images":"Free GPU Usage, AI Generates Exquisite Images",
+    "Register Now and Receive Free Prompts to Generate Exquisite Images as You Describe":"Register Now and Receive Free Prompts to Generate Exquisite Images as You Describe",
+    "Register Now":"Register Now",
+    "Sign In":"Sign In",
+    "full":"full",
+    "text search":"text search",
+    "All rights reserved.":"All rights reserved.",
+    "Friends Link":"Friends Link",
+    "Community":"Community",
+    "Core Concepts":"Core Concepts",
+    "Getting Started":"Getting Started",
+    "Responsive Design":"Responsive Design",
+    "Quick response":"Quick response",
+    "Dark Mode":"Dark Mode",
+    "Prerequisite":"Prerequisite",
+    "How to use":"How To Use"
+  },
+  "ios-page":{
+    "Light/Night mode":"Light/Night mode",
+    "Seamlessly":"Seamlessly",
+    "creates a smooth and silky experience.":"creates a smooth and silky experience.",
+    "Swift native ":"Swift native ",
+    "Want a smoother experience on your iPhone?":"Want a smoother experience on your iPhone?",
+    "Coming soon, Try the web version first.":"Coming soon, Try the web version first.",
+    "Register Now":"Register Now",
+    "Sign In":"Sign In",
+    "full":"full",
+    "text search":"text search",
+    "All rights reserved.":"All rights reserved.",
+    "Friends Link":"Friends Link",
+    "Community":"Community",
+    "Core Concepts":"Core Concepts",
+    "Getting Started":"Getting Started",
+    "Responsive Design":"Responsive Design",
+    "Quick response":"Quick response",
+    "Dark Mode":"Dark Mode",
+    "Prerequisite":"Prerequisite",
+    "How to use":"How To Use"
+  }
+}
