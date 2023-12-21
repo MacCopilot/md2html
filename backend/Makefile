@@ -7,3 +7,6 @@ server:
 	go run cmd/server/main.go
 monitor:
 	go run cmd/monitor/main.go src des
+build_image:
+	docker build -t backend -f ./build/backend.Dockerfile .
+

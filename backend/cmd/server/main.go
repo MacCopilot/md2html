@@ -23,6 +23,7 @@ func main() {
 		// 将 log 包的输出设置为 Zerolog 的 ConsoleWriter
 		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 	}
+	convert.ConvertFolder(config.SRCDIR, config.DESTDIR)
 	go runStaticServer(config)
 
 	// 启动监听
@@ -49,7 +50,7 @@ func runStaticServer(config util.Config) {
 	mux := http.NewServeMux()
 
 	// Serve static files from the "/tmp/wiki/" directory
-	fileServer := http.FileServer(http.Dir("des/"))
+	fileServer := http.FileServer(http.Dir(config.DESTDIR))
 	mux.Handle("/", http.StripPrefix("/", allowCORS(fileServer)))
 	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {
