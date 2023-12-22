@@ -21,4 +21,5 @@ npm i html-react-parser@4.2.0
 npm i mermaid@9.2.2
 npm i @headlessui/react
 npm i tailwind-scrollbar
+npm i sharp
 ```

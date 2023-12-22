@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  image_next_dev:
+    image: wiki_fronted
+    restart: always
+    expose:
+      - "3000"
+    ports:
+      - 3000:3000
+  image_backend_dev:
+    image: backend
+    expose:
+      - "8080"
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - ../src:/tmp/src
+      - ../des:/tmp/des
+    entrypoint:
+      [
+        "/app/start.sh"
+      ]
+    command: [ "/app/main" ]
+networks:
+  envoymesh: {}

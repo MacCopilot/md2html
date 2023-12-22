@@ -9,7 +9,7 @@ import RepoSideBarLink from "./RepoSideBarLink";
 import SideBarLoading from "../loadings/SideBarLoading";
 export async function getPublicRepoLayout() {
   let options = {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
@@ -24,8 +24,6 @@ export default function RepoSideBar() {
   const [layout, setLayout] = useState<MenuStruct[]>([]);
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
   const [loading,setLoading]=useState(true);
-
-
   useEffect(() => {
       getPublicRepoLayout().then((data) => {
         setLayout(data.sublayouts);
@@ -36,7 +34,6 @@ export default function RepoSideBar() {
         const data = JSON.parse(sideIndex);
         setSideBarIndex(data);
       }
-    
   }, []);
   if(loading){
     return <SideBarLoading sideBarOpen={sideBarOpen}/>

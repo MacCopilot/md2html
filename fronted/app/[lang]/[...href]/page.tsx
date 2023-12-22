@@ -1,17 +1,17 @@
-import { backend_url } from "@/utils/env_variable";
+import { backend_url,home_url } from "@/utils/env_variable";
 import WikiInfo from "@/components/WikiInfo";
 async function getMarkdownByHrefServer({href}:{href: string}) {
   const decodedHref = decodeURIComponent(href);
   const hrefArray = decodedHref.split(',');
   const constructedHref = hrefArray.join('/');
   const uniqueIdentifier = Date.now(); // 或者使用其他唯一标识符
-
   const url = `${backend_url}/${constructedHref}.wiki?uid=${uniqueIdentifier}`;
   let options = {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "no-cache",
+      "Origin": `${home_url}`,
     },
   };
   const response = await fetch(url, options);
@@ -58,5 +58,5 @@ export default async function MarkdownPage({
       />
     );
   }
-  return <div>get markdown error error:{verify_result.message}</div>;
+  return <div>get markdown error error:</div>;
 }
