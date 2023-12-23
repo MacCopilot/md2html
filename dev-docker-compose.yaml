@@ -13,7 +13,7 @@ services:
       - my_network
     environment:
       - BACKEND_URL=http://wiki_backend:8080
-      - NEXT_PUBLIC_BACKEND_URL=http://wiki_backend:8080
+      # - NEXT_PUBLIC_BACKEND_URL=http://localhost:8080 #build 时确定，无法修改
   wiki_backend:
     container_name: wiki_backend
     image: wiki_backend
