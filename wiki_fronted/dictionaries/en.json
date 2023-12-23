@@ -1,0 +1,30 @@
+{
+  "home-page":{
+    "cases":"Cases",
+    "modeSwitch":"Light/Night mode",
+    "seamlessSwitch":"Seamlessly",
+    "mobileFirst":"Mobile-first",
+    "hostRepo":"Online Hosting and Rendering of Markdown Git Repositories",
+    "knowledgeRepo":"Personal knowledge repository hosting, not open to the public.",
+    "registerNow":"Register Now",
+    "signIn":"Sign In",
+    "full":"full",
+    "textSearch":"text search",
+    "rightRes":"All rights reserved.",
+    "friendLink":"Friends Link",
+    "community":"Community",
+    "coreConcept":"Core Concepts",
+    "getStarted":"Getting Started",
+    "responsiveDesign":"Responsive Design",
+    "quickResponse":"Quick response",
+    "darkMode":"Dark Mode",
+    "Prerequisite":"Prerequisite",
+    "howTo":"How To Use",
+    "twoLang":"Supports Chinese and English full-text search, quickly find the documents you want.",
+    "fullTextSearch":"Full-Text Search",
+    "mobileDevice":"Mobile Devices",
+    "learnMore":"Learn More",
+    "tailwindcssSupport":"With the support of tailwindcss, all pages are designed in a responsive manner, and your markdown can be viewed beautifully on mobile devices.",
+    "fullTextSearchPSQL":"We utilize the full-text search feature of PostgreSQL to provide you with fast and efficient searching."
+  }
+}

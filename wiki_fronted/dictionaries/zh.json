@@ -1,0 +1,30 @@
+{
+  "home-page":{
+    "cases":"案例",
+    "modeSwitch":"日/夜 模式",
+    "seamlessSwitch":"无缝切换",
+    "mobileFirst":"移动端优先",
+    "hostRepo":"在线寄存、渲染Markdown Git仓库",
+    "knowledgeRepo":"个人知识库寄存，不对外开放",
+    "registerNow":"立即注册",
+    "signIn":"登录",
+    "full":"全文",
+    "textSearch":"检索",
+    "rightRes":"保留所有权利",
+    "friendLink":"友链",
+    "community":"社交媒体",
+    "coreConcept":"特性",
+    "getStarted":"开始使用",
+    "responsiveDesign":"响应式设计",
+    "quickResponse":"快速响应",
+    "darkMode":"夜间模式",
+    "Prerequisite":"先决条件",
+    "howTo":"如何使用",
+    "twoLang":"支持中文、英文全文检索、快速找出您想要的文档",
+    "fullTextSearch":"全文检索",
+    "mobileDevice":"移动设备",
+    "learnMore":"了解更多",
+    "tailwindcssSupport":"在TailwindCss加持下，我们对移动端设计进行的优化，使得您可以获得更舒适的阅读体验",
+    "fullTextSearchPSQL":"我们使用postgres 全文检索功能，为您提供高速、高效的搜索"
+  }
+}

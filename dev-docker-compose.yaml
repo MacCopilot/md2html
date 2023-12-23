@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  wiki_fronted:
+    container_name: wiki_fronted
+    image: wiki_fronted
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - wiki_backend
+    networks:
+      - my_network
+    environment:
+      - BACKEND_URL=http://wiki_backend:8080
+      - NEXT_PUBLIC_BACKEND_URL=http://wiki_backend:8080
+  wiki_backend:
+    container_name: wiki_backend
+    image: wiki_backend
+    expose:
+      - "8080"
+    ports:
+      - 8080:8080
+    restart: always
+    volumes:
+      - ./src:/tmp/src
+      - ./des:/tmp/des
+    environment:
+      - SRC_DIR=/tmp/src
+      - DEST_DIR=/tmp/des
+    entrypoint:
+      - "/app/start.sh"
+    command: [ "/app/main" ]
+    networks:
+      - my_network
+
+# 定义一个网络
+networks:
+  my_network:
+    driver: bridge

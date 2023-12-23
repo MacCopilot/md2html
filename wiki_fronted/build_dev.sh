@@ -1,0 +1,1 @@
+docker build  -t lite -f ./lite.Dockerfile .
