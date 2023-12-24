@@ -12,8 +12,8 @@ export function isContains(str: string | undefined, substr: string) {
   }
   return str.indexOf(substr) >= 0;
 }
-import ImageWrapper from "./ImageWrapper"
-import ImageWrapperS from "./ImageWrapperS"
+
+import BackendImage from "./BackendImage"
 import { backend_url } from "@/utils/env_variable";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -407,15 +407,11 @@ export default function ReactHtmlParser({
       }
       if (domNode instanceof Element && domNode.name === "img") {
         if (domNode.attribs.src.startsWith("http")) {
-          return <ImageWrapper path={domNode.attribs.src}/>
-          // return (
-          //   <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
-          // );
+          return (
+            <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
+          );
         } else {
-          // console.log("prefix:prefixPath:",prefixPath)
-          // console.log("urls is:",`${backend_url}/`+prefixPath + "/" + domNode.attribs.src)
-          return <ImageWrapperS path={prefixPath + "/" + domNode.attribs.src}/>
-          // return <img className="w-full my-4 rounded-md" src={`${backend_url}/`+prefixPath + "/" + domNode.attribs.src} />
+          return <BackendImage path={prefixPath + "/" + domNode.attribs.src}/>
         }
       }
       if (domNode instanceof Element && domNode.name === "del") {
