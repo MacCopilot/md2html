@@ -11,7 +11,7 @@ interface NavBarProps {
 export default function NavBar(props: NavBarProps) {
   return (
     <div
-      className="fixed top-0 z-50 w-full 
+      className="sticky top-0 z-50 w-full 
         backdrop-blur supports-backdrop-blur:bg-white/60
         lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] 
         bg-transparent text-slate-500 dark:text-slate-200

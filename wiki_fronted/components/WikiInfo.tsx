@@ -112,7 +112,7 @@ export default function WikiInfo(props: WikiInfoProps) {
           <a
             {...props}
             onClick={handleClick}
-            className={` group flex items-start py-1 hover:text-sky-500  dark:hover:text-sky-500 ${
+            className={`group flex items-start py-1 hover:text-sky-500  dark:hover:text-sky-500 ${
               get_act() === props.href.substring(1)
                 ? "dark:text-sky-500 text-sky-500"
                 : "dark:text-slate-400"
@@ -151,9 +151,6 @@ export default function WikiInfo(props: WikiInfoProps) {
         
       </ListGroupWrapper>
       <ContentSideBar>
-        <h5 className="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100">
-          目录
-        </h5>
         {parse(props.markdownlist, html_parser_options_list)}
       </ContentSideBar>
     </>

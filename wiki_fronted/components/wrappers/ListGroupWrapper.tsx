@@ -9,18 +9,10 @@ interface ListGroupWrapperProps {
 export default function ListGroupWrapper(props: ListGroupWrapperProps) {
   const { sideBarOpen } = useContext(SideBarContext);
   return (
-    <div className="flex  items-center justify-center">
-      <div
-        className={`relative z-5 pt-8 px-4 lg:px-8 mb-4 min-h-screen  w-full mx-atuo top-[2rem] lg:top-[3rem] 
-        ${
-          sideBarOpen
-            ? "lg:max-w-[min(calc(100%-30rem),64rem)] lg:left-[max(100px,calc(50%-32rem))] 2xl:left-0  2xl:max-w-[min(calc(100%-40rem),64rem)]"
-            : "lg:max-w-[min(calc(100%-20rem),64rem)]"
-        }
-      `}
-      >
+
+    <div className="sticky z-40 inset-0 top-[5rem] px-8  overflow-y-auto  scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2">
+        <div className="h-10 bg-white dark:bg-slate-900"></div>
         {props.children}
-      </div>
     </div>
   );
 }

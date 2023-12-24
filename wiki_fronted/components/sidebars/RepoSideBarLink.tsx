@@ -5,7 +5,7 @@ import React from "react";
 
 export default function RepoSideBarLink() {
   return (
-    <div className="mb-8 md:mt-0 text-lg font-bold	">
+    <div className="mb-8 md:mt-0 text-lg font-bold">
       <Link
         href={`/docs/readme`}
         className="group flex items-center lg:text-sm lg:leading-6 mb-4 

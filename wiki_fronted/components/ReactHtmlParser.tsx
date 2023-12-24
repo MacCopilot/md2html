@@ -400,8 +400,9 @@ export default function ReactHtmlParser({
             <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
           );
         } else {
-          console.log("urls is:",`${backend_url}`+prefixPath + "/" + domNode.attribs.src)
-          return <img className="w-full my-4 rounded-md" src={`${backend_url}`+prefixPath + "/" + domNode.attribs.src} />
+          console.log("prefix:prefixPath:",prefixPath)
+          console.log("urls is:",`${backend_url}/`+prefixPath + "/" + domNode.attribs.src)
+          return <img className="w-full my-4 rounded-md" src={`${backend_url}/`+prefixPath + "/" + domNode.attribs.src} />
         }
       }
       if (domNode instanceof Element && domNode.name === "del") {
