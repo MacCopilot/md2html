@@ -2,11 +2,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { SideBarContext } from "@/providers/SideBarProvider";
 import { RiMenu4Line, RiMenuLine } from "react-icons/ri";
+import { usePathname } from "next/navigation";
 function SideBarToggle() {
   const { sideBarOpen, setSideBarOpen } = useContext(SideBarContext);
   const [mounted, setMounted] = useState(false);
   const [value, setValue] = useState(sideBarOpen);
-
+  const pathName = usePathname();
+  console.log("pathName:",pathName)
   // 在组件加载时从localStorage中读取值, set mounted
   useEffect(() => {
     const storedValue = localStorage.getItem("sidebarValue");
@@ -39,6 +41,9 @@ function SideBarToggle() {
       className="mr-2 md:mr-3 block w-7 h-7  dark:text-slate-200  hover:text-sky-500  cursor-pointer"
     />
   );
+  if (pathName == "/" || pathName == "/zh" || pathName == "/en") {
+    return <></>
+  }
   return (
     <IconText
       Icon={sideBarOpen === false ? RiMenuLine : RiMenu4Line}
