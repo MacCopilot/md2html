@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import {
   domToReact,
   attributesToProps,
@@ -6,6 +6,14 @@ import {
   Element,
   HTMLReactParserOptions,
 } from "html-react-parser";
+export function isContains(str: string | undefined, substr: string) {
+  if (str == undefined) {
+    return false;
+  }
+  return str.indexOf(substr) >= 0;
+}
+import ImageWrapper from "./ImageWrapper"
+import ImageWrapperS from "./ImageWrapperS"
 import { backend_url } from "@/utils/env_variable";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -19,7 +27,7 @@ import {
   MdOutlineTipsAndUpdates,
 } from "react-icons/md";
 import { AiFillInfoCircle, AiFillWarning, AiFillCode } from "react-icons/ai";
-import { isContains, generateRandomId, copy2ClipBoard } from "@/utils/util";
+import { generateRandomId, copy2ClipBoard } from "@/utils/util";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { MdErrorOutline } from "react-icons/md";
 import { classNameMap } from "@/utils/span_render";
@@ -110,14 +118,15 @@ export default function ReactHtmlParser({
         domNode.attribs.class === "math display"
       ) {
         return (
-          <MathJaxContext version={3} config={mathjax_config}>
-            <div className="scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
-              <MathJax>
-                {" "}
-                {domToReact(domNode.children, html_parser_options)}{" "}
-              </MathJax>
-            </div>
-          </MathJaxContext>
+          <></>
+          // <MathJaxContext version={3} config={mathjax_config}>
+          //   <div className="scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
+          //     <MathJax>
+          //       {" "}
+          //       {domToReact(domNode.children, html_parser_options)}{" "}
+          //     </MathJax>
+          //   </div>
+          // </MathJaxContext>
         );
       }
       if (
@@ -125,14 +134,15 @@ export default function ReactHtmlParser({
         domNode.attribs.class === "math inline"
       ) {
         return (
-          <MathJaxContext version={3} config={mathjax_config}>
-            <span className="scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
-              <MathJax inline>
-                {" "}
-                {domToReact(domNode.children, html_parser_options)}{" "}
-              </MathJax>
-            </span>
-          </MathJaxContext>
+          <></>
+          // <MathJaxContext version={3} config={mathjax_config}>
+          //   <span className="scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
+          //     <MathJax inline>
+          //       {" "}
+          //       {domToReact(domNode.children, html_parser_options)}{" "}
+          //     </MathJax>
+          //   </span>
+          // </MathJaxContext>
         );
       }
 
@@ -140,46 +150,47 @@ export default function ReactHtmlParser({
         let cur_id = id;
         id += 1;
         return (
-          <div className="relative z-10 my-4 col-span-3 font-base rounded-md bg-slate-100/50 dark:bg-slate-800/50  ring-1	ring-slate-200 dark:ring-slate-900/10">
-            <div className="relative py-1 md:py-2 space-x-4 rounded-t-md flex items-center justify-center  text-slate-400 text-xs md:text-sm leading-6 bg-slate-200/50 dark:bg-slate-800/50">
-              <div className="relative ml-2 md:ml-4 w-8 h-8 rounded-full text-white flex items-center justify-center">
-                <AiFillCode className="w-5 h-5 md:w-6 md:h-6 text-slate-500 dark:text-slate-200" />
-              </div>
-              <p className="flex-1 text-base md:text-lg font-semibold text-slate-900 dark:text-slate-200">
-                {domNode.attribs.class}
-              </p>
-              <div className="absolute top-2 right-0 md:h-8 flex items-center md:pr-4 pr-2">
-                <div className="relative flex">
-                  <MdOutlineContentCopy
-                    className="w-5 h-5 md:w-6 md:h-6 cursor-pointer text-slate-500 dark:text-slate-300"
-                    onClick={() => {
-                      console.log("copy to clipboard")
-                      copy2ClipBoard("code_id_" + cur_id);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              className="highlight p-2 md:p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200
-          scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-auto max-h-[42rem]
-        "
-            >
-              <pre id={"code_id_" + cur_id}>
-                <code>
-                  {domNode.attribs.class === "mermaid" ? (
-                    <MermaidCode
-                      graphDefinition={String(
-                        domToReact(domNode.children, html_parser_options)
-                      )}
-                    />
-                  ) : (
-                    <>{domToReact(domNode.children, html_parser_options)}</>
-                  )}
-                </code>
-              </pre>
-            </div>
-          </div>
+          <></>
+        //   <div className="relative z-10 my-4 col-span-3 font-base rounded-md bg-slate-100/50 dark:bg-slate-800/50  ring-1	ring-slate-200 dark:ring-slate-900/10">
+        //     <div className="relative py-1 md:py-2 space-x-4 rounded-t-md flex items-center justify-center  text-slate-400 text-xs md:text-sm leading-6 bg-slate-200/50 dark:bg-slate-800/50">
+        //       <div className="relative ml-2 md:ml-4 w-8 h-8 rounded-full text-white flex items-center justify-center">
+        //         <AiFillCode className="w-5 h-5 md:w-6 md:h-6 text-slate-500 dark:text-slate-200" />
+        //       </div>
+        //       <p className="flex-1 text-base md:text-lg font-semibold text-slate-900 dark:text-slate-200">
+        //         {domNode.attribs.class}
+        //       </p>
+        //       <div className="absolute top-2 right-0 md:h-8 flex items-center md:pr-4 pr-2">
+        //         <div className="relative flex">
+        //           <MdOutlineContentCopy
+        //             className="w-5 h-5 md:w-6 md:h-6 cursor-pointer text-slate-500 dark:text-slate-300"
+        //             onClick={() => {
+        //               console.log("copy to clipboard")
+        //               copy2ClipBoard("code_id_" + cur_id);
+        //             }}
+        //           />
+        //         </div>
+        //       </div>
+        //     </div>
+        //     <div
+        //       className="highlight p-2 md:p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200
+        //   scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-auto max-h-[42rem]
+        // "
+        //     >
+        //       <pre id={"code_id_" + cur_id}>
+        //         <code>
+        //           {domNode.attribs.class === "mermaid" ? (
+        //             <MermaidCode
+        //               graphDefinition={String(
+        //                 domToReact(domNode.children, html_parser_options)
+        //               )}
+        //             />
+        //           ) : (
+        //             <>{domToReact(domNode.children, html_parser_options)}</>
+        //           )}
+        //         </code>
+        //       </pre>
+        //     </div>
+        //   </div>
         );
       }
       if (
@@ -396,13 +407,15 @@ export default function ReactHtmlParser({
       }
       if (domNode instanceof Element && domNode.name === "img") {
         if (domNode.attribs.src.startsWith("http")) {
-          return (
-            <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
-          );
+          return <ImageWrapper path={domNode.attribs.src}/>
+          // return (
+          //   <img className="w-full my-4 rounded-md" src={domNode.attribs.src} />
+          // );
         } else {
-          console.log("prefix:prefixPath:",prefixPath)
-          console.log("urls is:",`${backend_url}/`+prefixPath + "/" + domNode.attribs.src)
-          return <img className="w-full my-4 rounded-md" src={`${backend_url}/`+prefixPath + "/" + domNode.attribs.src} />
+          // console.log("prefix:prefixPath:",prefixPath)
+          // console.log("urls is:",`${backend_url}/`+prefixPath + "/" + domNode.attribs.src)
+          return <ImageWrapperS path={prefixPath + "/" + domNode.attribs.src}/>
+          // return <img className="w-full my-4 rounded-md" src={`${backend_url}/`+prefixPath + "/" + domNode.attribs.src} />
         }
       }
       if (domNode instanceof Element && domNode.name === "del") {
