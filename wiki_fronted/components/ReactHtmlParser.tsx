@@ -12,7 +12,8 @@ export function isContains(str: string | undefined, substr: string) {
   }
   return str.indexOf(substr) >= 0;
 }
-
+import CodeBlock from "./CodeBlock"
+import MathCode from "./MathDisplay"
 import BackendImage from "./BackendImage"
 import { backend_url } from "@/utils/env_variable";
 import Link from "next/link";
@@ -118,6 +119,7 @@ export default function ReactHtmlParser({
         domNode.attribs.class === "math display"
       ) {
         return (
+          // <MathCode domNode={domNode} />
           <></>
           // <MathJaxContext version={3} config={mathjax_config}>
           //   <div className="scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
@@ -151,6 +153,7 @@ export default function ReactHtmlParser({
         id += 1;
         return (
           <></>
+          // <CodeBlock cur_id={cur_id} domNode={domNode}/>
         //   <div className="relative z-10 my-4 col-span-3 font-base rounded-md bg-slate-100/50 dark:bg-slate-800/50  ring-1	ring-slate-200 dark:ring-slate-900/10">
         //     <div className="relative py-1 md:py-2 space-x-4 rounded-t-md flex items-center justify-center  text-slate-400 text-xs md:text-sm leading-6 bg-slate-200/50 dark:bg-slate-800/50">
         //       <div className="relative ml-2 md:ml-4 w-8 h-8 rounded-full text-white flex items-center justify-center">

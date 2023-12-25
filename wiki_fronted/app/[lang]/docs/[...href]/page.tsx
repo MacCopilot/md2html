@@ -22,7 +22,7 @@ async function getMarkdownByHrefServer({ href }: { href: string }) {
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch data. Status: ${response.status},url:${url}`
+        `Failed to fetch data.page Status: ${response.status},url:${url}`
       );
     }
 

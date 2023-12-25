@@ -18,7 +18,7 @@ async function fetchData(url: string) {
 
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch data. Status: ${response.status}, url: ${url}`
+      `Failed to fetch data.image Status: ${response.status}, url: ${url}`
     );
   }
 

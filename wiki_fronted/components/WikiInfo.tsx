@@ -16,6 +16,7 @@ const ReactHtmlParser = dynamic(() => import("@/components/ReactHtmlParser"));
 
 // import ListGroupWrapper from "./wrappers/ListGroupWrapper";
 import ContentSideBar from "./sidebars/ContentSideBar";
+import HtmlParser from "@/components/HtmlParser";
 interface WikiInfoProps {
   sectionIds: string[];
   markdownlist: string;
@@ -30,12 +31,13 @@ export default function WikiInfo(props: WikiInfoProps) {
   return (
     <div className="sticky z-40 inset-0 top-[5rem] px-8  overflow-y-auto  scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2">
       <div className="h-10 bg-white dark:bg-slate-900"></div>
-      <ReactHtmlParser
+      {/* <ReactHtmlParser
         prefixPath={props.prefixPath}
         htmlString={props.markdowntext}
         repo_id={props.parsedRepoId}
         isPublic={props.isPublic}
-      />
+      /> */}
+      <HtmlParser htmlString={props.markdowntext}/>
     </div>
   );
 }
