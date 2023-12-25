@@ -7,6 +7,7 @@
 ### A.Dev Mode
 
 #### 后端
+依赖：golang
 ```shell
 cd wiki_backend
 go mod tidy
@@ -14,6 +15,7 @@ make server
 ```
 
 #### 前端
+依赖：nodejs
 ```shell
 cd wiki_fronted
 npm install
@@ -21,7 +23,7 @@ npm run dev
 ```
 
 #### B.Prod Mode
-
+依赖：docker&docker compose
 ```shell
 make build_backend
 make build_fronted
