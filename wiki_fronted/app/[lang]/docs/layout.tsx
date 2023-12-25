@@ -1,5 +1,6 @@
 import RepoSideBarWrapper from "@/components/sidebars/RepoSideBarWrapper";
-export default function RootLayout({
+
+export default function Layout({
   children
 }: {
   children: React.ReactNode;

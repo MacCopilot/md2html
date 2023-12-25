@@ -1,32 +1,29 @@
-# md2html
+# MarkRepoLite
 
+> **Mrakdown Repo Host List** 有组织的渲染markdown仓库成优美的网页
+
+# 如何使用
+
+### A.Dev Mode
+
+#### 后端
 ```shell
-go mod init github.com/zizdlp/md2html 
-go mod tidy  #install deps
+cd wiki_backend
+go mod tidy
+make server
 ```
 
-
-### 安装依赖
-
+#### 前端
 ```shell
-npm i react-toastify
-npm i negotiator
-npm i --save-dev @types/negotiator
-npm i @formatjs/intl-localematcher
-npm i next-themes
-npm i better-react-mathjax
-npm i react-icons
-npm i @heroicons/react
-npm i html-react-parser@4.2.0
-npm i mermaid@9.2.2
-npm i @headlessui/react
-npm i tailwind-scrollbar
-npm i sharp
+cd wiki_fronted
+npm install
+npm run dev
 ```
 
-docker exec -u root -it lite /bin/sh
+#### B.Prod Mode
 
-
-public para hard code 不能修改，所以docker compose 使用了    
-    ports:
-      - 8080:8080
+```shell
+make build_backend
+make build_fronted
+make run_compose
+```
