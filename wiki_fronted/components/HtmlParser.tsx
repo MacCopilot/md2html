@@ -6,6 +6,15 @@ import MathInline from "./MathInline";
 import CodeBlock from "./CodeBlock";
 import { classNameMap } from "@/utils/span_render";
 import BackendImage from "./BackendImage";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
+import {
+  MdDiversity1,
+  MdOutlineContentCopy,
+  MdOutlineTipsAndUpdates,
+  MdErrorOutline,
+} from "react-icons/md";
+import { AiFillInfoCircle, AiFillWarning, AiFillCode } from "react-icons/ai";
+import Link from "next/link";
 interface Attribute {
   name: string;
   value: string;
@@ -68,13 +77,16 @@ const parseHTMLString = (
         );
       } else if (tagName === "SPAN") {
         const classAttribute = node.getAttribute("class");
+        console.log("classAttribute is:", classAttribute);
         if (classAttribute && classAttribute in classNameMap) {
-          console.log("class is:",classNameMap[classAttribute])
+          console.log("class is:", classNameMap[classAttribute]);
           return (
             <span className={classNameMap[classAttribute]}>
               {Array.from(node.childNodes).map(processNode)}
             </span>
           );
+        } else {
+          return <span>{Array.from(node.childNodes).map(processNode)}</span>;
         }
       } else if (tagName === "CODE") {
         const props = attributesToProps(node.attributes);
@@ -83,7 +95,7 @@ const parseHTMLString = (
             className="text-blue-500 dark:text-blue-300 scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto"
             {...props}
           >
-            <span className="overflow-auto inline-block max-w-full whitespace-nowrap ">
+            <span className="overflow-auto inline-block max-w-full whitespace-nowrap">
               {Array.from(node.childNodes).map(processNode)}
             </span>
           </code>
@@ -113,20 +125,134 @@ const parseHTMLString = (
         return (
           <sup {...props}>{Array.from(node.childNodes).map(processNode)}</sup>
         );
-      } else if (tagName === "DIV") {
-        if (node.className === "footnotes") {
+      }
+      // else if (tagName === "DIV") {
+      //   if (node.className === "footnotes") {
+      //     return (
+      //       <div className="mx-1 my-4">
+      //         {Array.from(node.childNodes).map(processNode)}
+      //       </div>
+      //     );
+      //   } else if (node.className === "adm-title") {
+      //     return <>unimpl</>;
+      //   } else if (node.className === "adm-body") {
+      //     return <>unimpl</>;
+      //   }
+      //   return (
+      //     <div key={Math.random()} className="text-xs md:text-base">
+      //       {Array.from(node.childNodes).map(processNode)}
+      //     </div>
+      //   );
+      // }
+
+      if (tagName === "DIV") {
+        const classAttribute = node.getAttribute("class");
+
+        if (classAttribute === "footnotes") {
           return (
             <div className="mx-1 my-4">
               {Array.from(node.childNodes).map(processNode)}
             </div>
           );
-        } else if (node.className === "adm-title") {
-          return <>unimpl</>;
-        } else if (node.className === "adm-body") {
-          return <>unimpl</>;
         }
+
+        if (classAttribute === "adm-title") {
+          type ParentType = "note" | "warning" | "info" | "tip" | "error";
+          let parentType: ParentType = "note"; // or "warning", "info", "tip", "error"
+
+          const iconTypes = {
+            note: BsFillBookmarkCheckFill,
+            warning: AiFillWarning,
+            info: AiFillInfoCircle,
+            tip: MdOutlineTipsAndUpdates,
+            error: MdErrorOutline,
+          };
+
+          let bg1 = "bg-cyan-400/25 dark:bg-cyan-800/25";
+          let bg2 = "bg-cyan-500 dark:bg-cyan-900";
+
+          const parent = node.parentElement;
+          const parentAttr =
+            parent !== null && parent.getAttribute !== undefined;
+
+          if (parentAttr) {
+            const attrsArray = Array.from(parent.attributes);
+            const classAttribute = attrsArray.find(
+              (attr) => attr.name === "class"
+            );
+
+            if (
+              classAttribute &&
+              classAttribute.value === "admonition adm-note"
+            ) {
+              parentType = "note";
+              bg1 = "bg-cyan-400/25 dark:bg-cyan-800/25";
+              bg2 = "bg-cyan-500 dark:bg-cyan-900";
+            } else if (
+              classAttribute &&
+              classAttribute.value === "admonition adm-warning"
+            ) {
+              parentType = "warning";
+              bg1 = "bg-yellow-400/25 dark:bg-yellow-800/25";
+              bg2 = "bg-yellow-500 dark:bg-yellow-900";
+            } else if (
+              classAttribute &&
+              classAttribute.value === "admonition adm-info"
+            ) {
+              parentType = "info";
+              bg1 = "bg-green-400/25 dark:bg-green-800/25";
+              bg2 = "bg-green-500 dark:bg-green-900";
+            } else if (
+              classAttribute &&
+              classAttribute.value === "admonition adm-tip"
+            ) {
+              parentType = "tip";
+            } else if (
+              classAttribute &&
+              classAttribute.value === "admonition adm-error"
+            ) {
+              parentType = "error";
+              bg1 = "bg-red-400/25 dark:bg-red-800/25";
+              bg2 = "bg-red-500 dark:bg-red-900";
+            }
+          }
+
+          const Icon = iconTypes[parentType];
+
+          return (
+            <div
+              className={`relative py-2  rounded-t-md flex items-center justify-center space-x-4 ${bg1}`}
+            >
+              <div
+                className={`relative ml-4 w-6 h-6 rounded-full text-white flex items-center justify-center ${bg2}`}
+              >
+                <Icon />
+              </div>
+              <p className="flex-1 text-lg font-semibold text-slate-900 dark:text-slate-200 overflow-x-auto">
+                {Array.from(node.childNodes).map(processNode)}
+              </p>
+            </div>
+          );
+        }
+
+        if (classAttribute === "adm-body") {
+          return (
+            <div className="p-4 overflow-x-auto">
+              {Array.from(node.childNodes).map(processNode)}
+            </div>
+          );
+        }
+
+        if (classAttribute && classAttribute.includes("admonition")) {
+          return (
+            <div className="my-4 rounded-md bg-slate-100/50 dark:bg-slate-800/50 ring-1 ring-slate-200 dark:ring-slate-900/10">
+              {Array.from(node.childNodes).map(processNode)}
+            </div>
+          );
+        }
+
         return (
-          <div key={Math.random()} className="text-xs md:text-base">
+          <div className="text-xs md:text-base">
             {Array.from(node.childNodes).map(processNode)}
           </div>
         );
@@ -197,7 +323,41 @@ const parseHTMLString = (
       } else if (tagName === "DEL") {
         return <del>{Array.from(node.childNodes).map(processNode)}</del>;
       } else if (tagName === "A") {
-        return <>unimpl</>
+        const parent = node.parentElement;
+        const parentAttr = parent !== null && parent.getAttribute !== undefined;
+        if (parentAttr) {
+          const tag = parent.tagName;
+          if (tag === "SUP") {
+            return (
+              <Link
+                className="text-sky-500 hover:text-sky-600 text-xs"
+                href={node.getAttribute("href") || ""}
+              >
+                {Array.from(node.childNodes).map(processNode)}
+              </Link>
+            );
+          }
+        }
+        const href = node.getAttribute("href");
+        if (href && href.includes("footnote")) {
+          return (
+            <Link
+              className="text-sky-500 hover:text-sky-600"
+              href={node.getAttribute("href") || ""}
+            >
+              {Array.from(node.childNodes).map(processNode)}
+            </Link>
+          );
+        }
+
+        return (
+          <Link
+            className="px-1 underline underline-offset-2 text-sky-500 hover:text-sky-600"
+            href={node.getAttribute("href") || ""}
+          >
+            {Array.from(node.childNodes).map(processNode)}
+          </Link>
+        );
       }
     }
 
