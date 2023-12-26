@@ -1,28 +1,11 @@
 "use client";
-import {
-  MdDiversity1,
-  MdOutlineContentCopy,
-  MdOutlineTipsAndUpdates,
-} from "react-icons/md";
-import { AiFillInfoCircle, AiFillWarning, AiFillCode } from "react-icons/ai";
-import { generateRandomId, copy2ClipBoard } from "@/utils/util";
-import { BsFillBookmarkCheckFill } from "react-icons/bs";
-import { MdErrorOutline } from "react-icons/md";
-import { classNameMap } from "@/utils/span_render";
-import { mathjax_config } from "@/utils/mathjax_config";
-import { MathJax } from "better-react-mathjax";
-import { MathJaxContext } from "better-react-mathjax";
-import parse from "html-react-parser";
-import {
-  domToReact,
-  attributesToProps,
-  DOMNode,
-  Element,
-  HTMLReactParserOptions,
-} from "html-react-parser";
+import { MdOutlineContentCopy } from "react-icons/md";
+import { AiFillCode } from "react-icons/ai";
+import { copy2ClipBoard } from "@/utils/util";
+import MermaidCode from "./MermaidCode";
 interface CodeBlockProps {
   cur_id: number;
-  className:String;
+  className: String;
   children: React.ReactNode;
 }
 export default function CodeBlock(props: CodeBlockProps) {
@@ -53,18 +36,13 @@ export default function CodeBlock(props: CodeBlockProps) {
                 "
       >
         <pre id={"code_id_" + props.cur_id}>
-          {/* <code>
-                    {props.domNode.attribs.class === "mermaid" ? (
-                      <MermaidCode
-                        graphDefinition={String(
-                          domToReact(props.domNode.children, html_parser_options)
-                        )}
-                      />
-                    ) : (
-                      <>{domToReact(props.domNode.children, html_parser_options)}</>
-                    )}
-                  </code> */}
-          <code>{props.children}</code>
+          <code>
+            {props.className === "mermaid" ? (
+              <MermaidCode graphDefinition={String(props.children)} />
+            ) : (
+              <>{props.children}</>
+            )}
+          </code>
         </pre>
       </div>
     </div>

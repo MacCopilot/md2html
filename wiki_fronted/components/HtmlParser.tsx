@@ -126,24 +126,6 @@ const parseHTMLString = (
           <sup {...props}>{Array.from(node.childNodes).map(processNode)}</sup>
         );
       }
-      // else if (tagName === "DIV") {
-      //   if (node.className === "footnotes") {
-      //     return (
-      //       <div className="mx-1 my-4">
-      //         {Array.from(node.childNodes).map(processNode)}
-      //       </div>
-      //     );
-      //   } else if (node.className === "adm-title") {
-      //     return <>unimpl</>;
-      //   } else if (node.className === "adm-body") {
-      //     return <>unimpl</>;
-      //   }
-      //   return (
-      //     <div key={Math.random()} className="text-xs md:text-base">
-      //       {Array.from(node.childNodes).map(processNode)}
-      //     </div>
-      //   );
-      // }
 
       if (tagName === "DIV") {
         const classAttribute = node.getAttribute("class");
