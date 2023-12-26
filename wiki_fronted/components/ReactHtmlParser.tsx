@@ -12,7 +12,7 @@ export function isContains(str: string | undefined, substr: string) {
   }
   return str.indexOf(substr) >= 0;
 }
-import CodeBlock from "./CodeBlock"
+
 import MathCode from "./MathDisplay"
 import BackendImage from "./BackendImage"
 import { backend_url } from "@/utils/env_variable";
@@ -335,7 +335,7 @@ export default function ReactHtmlParser({
           );
         }
         return (
-          <div className=" text-xs md:text-base">
+          <div className="text-xs md:text-base">
             {domToReact(domNode.children, html_parser_options)}
           </div>
         );

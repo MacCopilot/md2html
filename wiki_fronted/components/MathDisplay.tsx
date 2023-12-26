@@ -10,7 +10,7 @@ interface MathDisplayProps {
 
 const MathDisplay: React.FC<MathDisplayProps> = ({ children }) => (
   <MathJaxContext version={3} config={mathjax_config}>
-    <div className="scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
+    <div  className="scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto overflow-y-hidden">
       <MathJax>{children}</MathJax>
     </div>
   </MathJaxContext>

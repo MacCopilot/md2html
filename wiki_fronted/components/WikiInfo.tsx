@@ -37,7 +37,7 @@ export default function WikiInfo(props: WikiInfoProps) {
         repo_id={props.parsedRepoId}
         isPublic={props.isPublic}
       /> */}
-      <HtmlParser htmlString={props.markdowntext}/>
+      <HtmlParser htmlString={props.markdowntext} prefixPath={props.prefixPath}/>
     </div>
   );
 }
