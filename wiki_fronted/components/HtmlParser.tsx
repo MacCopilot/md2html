@@ -290,7 +290,7 @@ const parseHTMLString = (
             </table>
           </div>
         );
-      } else if (tagName === "THREAD") {
+      } else if (tagName === "THEAD") {
         const randomKey = Math.random().toString(36).substring(7);
         return (
           <thead key={randomKey} className="bg-slate-50 dark:bg-slate-800/75">
