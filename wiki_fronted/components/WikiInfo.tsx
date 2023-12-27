@@ -1,21 +1,3 @@
-// "use client";
-// import parse from "html-react-parser";
-
-// import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-
-const ReactHtmlParser = dynamic(() => import("@/components/ReactHtmlParser"));
-
-// import {
-//   domToReact,
-//   attributesToProps,
-//   DOMNode,
-//   Element,
-//   HTMLReactParserOptions,
-// } from "html-react-parser";
-
-// import ListGroupWrapper from "./wrappers/ListGroupWrapper";
-import ContentSideBar from "./sidebars/ContentSideBar";
 import HtmlParser from "@/components/HtmlParser";
 interface WikiInfoProps {
   sectionIds: string[];

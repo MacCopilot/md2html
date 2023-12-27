@@ -1,15 +1,13 @@
 import { JSDOM } from "jsdom";
 import React from "react";
-import Heading from "./Heading";
-import MathDisplay from "./MathDisplay";
-import MathInline from "./MathInline";
-import CodeBlock from "./CodeBlock";
+import Heading from "./parsers/Heading";
+import MathDisplay from "./parsers/MathDisplay";
+import MathInline from "./parsers/MathInline";
+import CodeBlock from "./parsers/CodeBlock";
 import { classNameMap } from "@/utils/span_render";
-import BackendImage from "./BackendImage";
+import BackendImage from "./parsers/BackendImage";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import {
-  MdDiversity1,
-  MdOutlineContentCopy,
   MdOutlineTipsAndUpdates,
   MdErrorOutline,
 } from "react-icons/md";
