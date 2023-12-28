@@ -60,19 +60,16 @@ export default async function MarkdownPage({
     }
     return (
       <>
-        
-          <WikiInfo
-            markdowntext={markdownText}
-            markdownlist={markdownList}
-            parsedRepoId={params.repoid}
-            prefixPath={href}
-            NavBarOpen={true}
-            sectionIds={sectionIds}
-            markdown_id={1}
-            isPublic={true}
-          />
-
-
+        <WikiInfo
+          markdowntext={markdownText}
+          markdownlist={markdownList}
+          parsedRepoId={params.repoid}
+          prefixPath={href}
+          NavBarOpen={true}
+          sectionIds={sectionIds}
+          markdown_id={1}
+          isPublic={true}
+        />
         <SideBarTable markdownlist={markdownList} sectionIds={sectionIds} />
       </>
     );

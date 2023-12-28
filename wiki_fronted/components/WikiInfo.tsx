@@ -1,4 +1,4 @@
-import HtmlParser from "@/components/HtmlParser";
+import HtmlParser from "@/components/parsers/HtmlParser";
 interface WikiInfoProps {
   sectionIds: string[];
   markdownlist: string;

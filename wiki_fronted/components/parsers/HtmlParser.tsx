@@ -1,16 +1,12 @@
 import { JSDOM } from "jsdom";
 import React from "react";
-import Heading from "./parsers/Heading";
-import MathDisplay from "./parsers/MathDisplay";
-import MathInline from "./parsers/MathInline";
-import CodeBlock from "./parsers/CodeBlock";
+import MathDisplay from "./MathDisplay";
+import MathInline from "./MathInline";
+import CodeBlock from "./CodeBlock";
 import { classNameMap } from "@/utils/span_render";
-import BackendImage from "./parsers/BackendImage";
+import BackendImage from "./BackendImage";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
-import {
-  MdOutlineTipsAndUpdates,
-  MdErrorOutline,
-} from "react-icons/md";
+import { MdOutlineTipsAndUpdates, MdErrorOutline } from "react-icons/md";
 import { AiFillInfoCircle, AiFillWarning, AiFillCode } from "react-icons/ai";
 import Link from "next/link";
 interface Attribute {
@@ -39,39 +35,69 @@ const parseHTMLString = (
   const doc = parser.parseFromString(htmlString, "text/html");
   var tag_id = 0;
   const processNode = (node: Node): React.ReactNode => {
+
     if (node instanceof window.Element) {
       const tagName = node.tagName.toUpperCase();
       const idAttribute = node.getAttribute("id");
+      const randomKey = Math.random().toString(36).substring(7);
       if (tagName.startsWith("H") && !isNaN(parseInt(tagName[1], 10))) {
+        const HeadingComponent =
+          tagName.toLowerCase() as keyof JSX.IntrinsicElements;
+        const level = parseInt(tagName.substring(1), 10);
+        const className =
+          level == 1
+            ? "text-xl md:text-3xl font-black text-slate-900 tracking-tight text-center dark:text-slate-200 pb-3 md:pb-6 md:my-3"
+            : level == 2
+            ? "text-lg md:text-2xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200  py-2 md:py-4"
+            : level == 3
+            ? "text-base md:text-xl font-extrabold	text-slate-900 tracking-tight dark:text-slate-200  py-1.5"
+            : level == 4
+            ? "text-base md:text-lg  font-bold	text-slate-900 tracking-tight  dark:text-slate-200  py-1.5"
+            : level == 5
+            ? "text-sm md:text-base font-bold text-slate-900 tracking-tight  dark:text-slate-200  py-1"
+            : level == 6
+            ? "text-sm md:text-base font-semibold text-slate-900 tracking-tight dark:text-slate-200 py-0.5"
+            : "text-sm md:text-base font-semibold text-slate-900 tracking-tight dark:text-slate-200 py-0.5";
+
         return (
-          <Heading tagName={tagName} idAttribute={idAttribute}>
+          <HeadingComponent
+            key={randomKey}
+            id={idAttribute || undefined}
+            className={className}
+          >
             {Array.from(node.childNodes).map(processNode)}
-          </Heading>
+          </HeadingComponent>
         );
       } else if (
         node.classList.contains("math") &&
         node.classList.contains("display")
       ) {
         return (
-          <MathDisplay>
-            {Array.from(node.childNodes).map(processNode)}
-          </MathDisplay>
+          <div key={randomKey}>
+            <MathDisplay>
+              {Array.from(node.childNodes).map(processNode)}
+            </MathDisplay>
+          </div>
         );
       } else if (
         node.classList.contains("math") &&
         node.classList.contains("inline")
       ) {
         return (
-          <MathInline>
-            {Array.from(node.childNodes).map(processNode)}
-          </MathInline>
+          <span key={randomKey}>
+            <MathInline>
+              {Array.from(node.childNodes).map(processNode)}
+            </MathInline>
+          </span>
         );
       } else if (tagName === "CODEBLOCK") {
         tag_id += 1;
         return (
-          <CodeBlock cur_id={tag_id} className={node.className}>
-            {Array.from(node.childNodes).map(processNode)}
-          </CodeBlock>
+          <div key={randomKey}>
+            <CodeBlock cur_id={tag_id} className={node.className}>
+              {Array.from(node.childNodes).map(processNode)}
+            </CodeBlock>
+          </div>
         );
       } else if (tagName === "SPAN") {
         const classAttribute = node.getAttribute("class");
@@ -355,7 +381,11 @@ const parseHTMLString = (
         if (srcAttribute && srcAttribute.startsWith("http")) {
           return <img className="w-full my-4 rounded-md" src={srcAttribute} />;
         } else {
-          return <BackendImage path={prefixPath + "/" + srcAttribute} />;
+          return (
+            <div key={randomKey}>
+              <BackendImage path={prefixPath + "/" + srcAttribute} />
+            </div>
+          );
         }
       } else if (tagName === "DEL") {
         const randomKey = Math.random().toString(36).substring(7);
@@ -377,7 +407,7 @@ const parseHTMLString = (
                 className="text-sky-500 hover:text-sky-600 text-xs"
                 href={node.getAttribute("href") || ""}
               >
-                {Array.from(node.childNodes).map(processNode)}
+                [{Array.from(node.childNodes).map(processNode)}]
               </Link>
             );
           }
@@ -399,7 +429,7 @@ const parseHTMLString = (
           return (
             <Link
               key={randomKey}
-              className="px-1 underline underline-offset-2 text-sky-500 hover:text-sky-600"
+              className="px-1 underline underline-offset-[0.22rem] text-sky-500 hover:text-sky-600"
               href={node.getAttribute("href") || ""}
             >
               {Array.from(node.childNodes).map(processNode)}
@@ -408,9 +438,12 @@ const parseHTMLString = (
         }
       }
     }
-
-    // Default case: return the node as-is
-    return node.textContent;
+    else if (node instanceof window.Text) {
+      // 处理文本节点
+      return node.textContent
+    } else {
+      return null; // 或者其他处理逻辑
+    }
   };
 
   // Start processing from the body of the parsed HTML

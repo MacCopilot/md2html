@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 import { Locale } from "@/i18n-config";
 
 export default async function Home({
@@ -6,9 +6,5 @@ export default async function Home({
 }: {
   params: { lang: Locale };
 }) {
-  redirect('/docs/readme')
-
-  return (
-    <></>
-  );
+  redirect("/docs/readme");
 }
