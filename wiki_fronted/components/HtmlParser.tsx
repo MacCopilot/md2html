@@ -100,7 +100,7 @@ const parseHTMLString = (
           >
             <span
               key={randomKey}
-              className="overflow-auto inline-block max-w-full whitespace-nowrap"
+              className="overflow-auto max-w-full whitespace-nowrap"
             >
               {Array.from(node.childNodes).map(processNode)}
             </span>
