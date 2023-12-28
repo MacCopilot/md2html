@@ -1,7 +1,7 @@
 import SideBarTable from "@/components/SideBarTable";
 import WikiInfo from "@/components/WikiInfo";
 import { unstable_noStore as noStore } from "next/cache";
-
+import MainPageTransition from "@/components/sidebars/MainPageTransition"
 async function getMarkdownByHrefServer({ href }: { href: string }) {
   try {
     noStore(); // Opt into dynamic rendering
@@ -22,7 +22,7 @@ async function getMarkdownByHrefServer({ href }: { href: string }) {
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch data. Status: ${response.status},url:${url}`
+        `Failed to fetch data.page Status: ${response.status},url:${url}`
       );
     }
 
@@ -60,19 +60,16 @@ export default async function MarkdownPage({
     }
     return (
       <>
-        
-          <WikiInfo
-            markdowntext={markdownText}
-            markdownlist={markdownList}
-            parsedRepoId={params.repoid}
-            prefixPath={href}
-            NavBarOpen={true}
-            sectionIds={sectionIds}
-            markdown_id={1}
-            isPublic={true}
-          />
-
-
+        <WikiInfo
+          markdowntext={markdownText}
+          markdownlist={markdownList}
+          parsedRepoId={params.repoid}
+          prefixPath={href}
+          NavBarOpen={true}
+          sectionIds={sectionIds}
+          markdown_id={1}
+          isPublic={true}
+        />
         <SideBarTable markdownlist={markdownList} sectionIds={sectionIds} />
       </>
     );

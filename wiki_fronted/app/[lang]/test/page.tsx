@@ -1,47 +1,46 @@
-export default function TestPage() {
+export default function Alice() {
   return (
-    <div className="mx-auto max-w-screen-xl border-yellow-300 border-2 flex">
-      <div className="sticky top-[5rem]  pt-4  h-[calc(100vh-140px)] w-[284px] flex flex-col border-2 border-teal-500 ">
-        <div className="pb-[1px]  h-[60px] w-full rounded-md p-2 bg-green-200">
-          button
-        </div>
-        <div className="relative overflow-y-auto border-2 border-indigo-400">
-            <div className="h-96 border border-teal-200">nav1</div>
-            <div className="h-96 border border-teal-200">nav2</div>
-            <div className="h-96 border border-teal-200">nav3</div>
-            <div className="h-96 border border-teal-200">nav4</div>
-            <div className="h-96 border border-teal-200">nav5</div>
-            <div className="h-96 border border-teal-200">nav6</div>
-            <div className="h-96 border border-teal-200">nav7</div>
-            <div className="h-96 border border-teal-200">nav8</div>
-        </div>
+    <div className="flex mx-auto max-w-[100rem] min-h-screen">
+      <div
+        className={`border-2 border-teal-400 sticky h-[calc(100vh-120px)] z-40 inset-0 left-[max(0px,calc(50%-52rem))] w-[20rem] top-[5rem] px-4  overflow-y-auto  scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2`}
+      >
+        sidebars
+        <nav>
+          <div className="h-64">nav1</div>
+          <div className="h-64">nav2</div>
+          <div className="h-64">nav3</div>
+          <div className="h-64">nav4</div>
+          <div className="h-64">nav5</div>
+          <div className="h-64">nav6</div>
+        </nav>
       </div>
-      <div className="w-[50rem]">
-        <div className="relative overflow-y-auto border-2 border-indigo-400">
-            <div className="h-96 border border-teal-200">nav1</div>
-            <div className="h-96 border border-teal-200">nav2</div>
-            <div className="h-96 border border-teal-200">nav3</div>
-            <div className="h-96 border border-teal-200">nav4</div>
-            <div className="h-96 border border-teal-200">nav5</div>
-            <div className="h-96 border border-teal-200">nav6</div>
-            <div className="h-96 border border-teal-200">nav7</div>
-            <div className="h-96 border border-teal-200">nav8</div>
+      <main
+        className="flex-auto border-2 border-indigo-200 pt-10 xl:pr-16"
+      >
+        <div className="border-2 border-red-300">
+        main page
+        <div className="h-64">m1</div>
+        <div className="h-64">m2</div>
+        <div className="h-64">m3</div>
+        <div className="h-64">m4</div>
+        <div className="h-64">m5</div>
+        <div className="h-64">m6</div>
         </div>
-      </div>
-      <div className="sticky top-[5rem]  pt-4  h-[calc(100vh-140px)] w-[284px] flex flex-col border-2 border-teal-500 ">
-        <div className="pb-[1px]  h-[60px] w-full rounded-md p-2 bg-green-200">
-          button
-        </div>
-        <div className="relative overflow-y-auto border-2 border-indigo-400">
-            <div className="h-96 border border-teal-200">nav1</div>
-            <div className="h-96 border border-teal-200">nav2</div>
-            <div className="h-96 border border-teal-200">nav3</div>
-            <div className="h-96 border border-teal-200">nav4</div>
-            <div className="h-96 border border-teal-200">nav5</div>
-            <div className="h-96 border border-teal-200">nav6</div>
-            <div className="h-96 border border-teal-200">nav7</div>
-            <div className="h-96 border border-teal-200">nav8</div>
-        </div>
+
+      </main>
+      <div
+        className={`
+        hidden xl:block border-2 border-teal-400 sticky h-[calc(100vh-120px)] z-40 inset-0 left-[max(0px,calc(50%-52rem))] w-[15.5rem]  top-[5rem] px-4  overflow-y-auto  scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2`}
+      >
+        table
+        <nav>
+          <div className="h-64">t1</div>
+          <div className="h-64">t2</div>
+          <div className="h-64">t3</div>
+          <div className="h-64">t4</div>
+          <div className="h-64">t5</div>
+          <div className="h-64">t6</div>
+        </nav>
       </div>
     </div>
   );

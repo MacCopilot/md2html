@@ -27,7 +27,7 @@ export default function SideBarTable(props:SideBarTableProps){
     var href = e.target.getAttribute("href");
     const escapedSelector = href.replace(/#(\d)/, "#\\3$1 ");
     const section1 = document.querySelector(escapedSelector);
-    const navHeight = 20;
+    const navHeight = 8;
     window.scrollTo({
       top: section1.offsetTop - navHeight,
       behavior: "smooth",
@@ -39,7 +39,7 @@ export default function SideBarTable(props:SideBarTableProps){
         const section = document.getElementById(sectionId);
         if (section) {
           const rect = section.getBoundingClientRect();
-          return rect.top >= 20 && rect.top <= 100;
+          return rect.top >= 8 && rect.top <= 100;
         }
         return false;
       });
