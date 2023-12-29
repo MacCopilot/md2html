@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  wiki_fronted:
-    container_name: wiki_fronted
-    image: wiki_fronted
+  wiki_frontend:
+    container_name: wiki_frontend
+    image: wiki_frontend
     restart: always
     ports:
       - 3000:3000
