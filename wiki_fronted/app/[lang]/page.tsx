@@ -13,7 +13,7 @@ export default async function Home({
   return (
     <div>
       <div className="fixed stars"></div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden pt-20">
         <div className="mx-3 md:mx-4 sm:px-6 md:px-8">
           <header className="overflow-hidden pt-8 pb-24 text-slate-600 dark:text-slate-400 lg:py-16">
             <div className="absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
