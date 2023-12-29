@@ -1,7 +1,6 @@
 import SideBarTable from "@/components/SideBarTable";
 import WikiInfo from "@/components/WikiInfo";
 import { unstable_noStore as noStore } from "next/cache";
-import MainPageTransition from "@/components/sidebars/MainPageTransition"
 async function getMarkdownByHrefServer({ href }: { href: string }) {
   try {
     noStore(); // Opt into dynamic rendering

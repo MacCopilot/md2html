@@ -21,7 +21,7 @@ export default function SideBarTransition(props: SideBarTransitionProps) {
         leaveFrom="opacity-100"
         leaveTo="opacity-100"
       >
-        <div className="fixed lg:hidden z-40 bg-white/50 inset-0 w-full  backdrop-blur-sm dark:bg-slate-900/25"></div>
+        <div className="fixed xl:hidden z-40 bg-white/50 inset-0 w-full  backdrop-blur-sm dark:bg-slate-900/25"></div>
       </Transition.Child>
       <Transition.Child
         enter="transition ease-in-out duration-300 transform"
@@ -30,7 +30,8 @@ export default function SideBarTransition(props: SideBarTransitionProps) {
         leave="transition ease-in-out duration-300 transform"
         leaveFrom="translate-x-0 opacity-100"
         leaveTo="-translate-x-full opacity-0"
-        className={`sticky h-[calc(100vh-120px)] z-40 inset-0 w-[20rem] top-[5rem] px-4  overflow-y-auto  scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2`}
+        className={`fixed left-[max(0px,calc(50%-50rem))] z-40 inset-0 w-[20rem] top-0 pt-8 lg:pt-20 px-4 
+        overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-track-rounded-md  bg-white dark:bg-slate-900 pr-2`}
       >
         {props.children}
       </Transition.Child>
