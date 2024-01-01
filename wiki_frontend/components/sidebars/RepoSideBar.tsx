@@ -2,7 +2,7 @@
 import SubMenu from "./SubMenu";
 import SearchButton from "@/components/sidebars/SearchButton";
 import SideBarTransition from "./SideBarTransition";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuStruct } from "@/types/interface";
 
 interface ContentSideBarProps {
@@ -15,7 +15,7 @@ export default function RepoSideBar(props: ContentSideBarProps) {
     const sideIndex = localStorage.getItem("SideOpenIndex");
     if (sideIndex) {
       const data = JSON.parse(sideIndex);
-      console.log("data index is:",data)
+      console.log("data index is:", data);
       setSideBarIndex(data);
     }
   }, []);
