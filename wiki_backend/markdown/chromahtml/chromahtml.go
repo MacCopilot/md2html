@@ -261,7 +261,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 				fmt.Fprintf(w, "<span%s>", f.styleAttr(css, chroma.LineHighlight))
 			}
 
-			fmt.Fprintf(w, "<span%s%s>%s\n</span>", f.styleAttr(css, chroma.LineNumbersTable), f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
+			fmt.Fprintf(w, "<span%s%s>%s\n</span>", f.styleAttr(css, chroma.LineNumbersTable), f.lineIDAttribute(line), f.lineTitleWithMDLitefNeeded(css, lineDigits, line))
 
 			if highlight {
 				fmt.Fprintf(w, "</span>")
@@ -301,7 +301,7 @@ func (f *Formatter) writeHTML(w io.Writer, style *chroma.Style, tokens []chroma.
 
 			// Line number
 			if f.lineNumbers && !wrapInTable {
-				fmt.Fprintf(w, "<span%s%s>%s</span>", f.styleAttr(css, chroma.LineNumbers), f.lineIDAttribute(line), f.lineTitleWithLinkIfNeeded(css, lineDigits, line))
+				fmt.Fprintf(w, "<span%s%s>%s</span>", f.styleAttr(css, chroma.LineNumbers), f.lineIDAttribute(line), f.lineTitleWithMDLitefNeeded(css, lineDigits, line))
 			}
 
 			fmt.Fprintf(w, `<span%s>`, f.styleAttr(css, chroma.CodeLine))
@@ -344,7 +344,7 @@ func (f *Formatter) lineIDAttribute(line int) string {
 	return fmt.Sprintf(" id=\"%s\"", f.lineID(line))
 }
 
-func (f *Formatter) lineTitleWithLinkIfNeeded(css map[chroma.TokenType]string, lineDigits, line int) string {
+func (f *Formatter) lineTitleWithMDLitefNeeded(css map[chroma.TokenType]string, lineDigits, line int) string {
 	title := fmt.Sprintf("%*d", lineDigits, line)
 	if !f.linkableLineNumbers {
 		return title
