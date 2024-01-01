@@ -11,12 +11,11 @@ interface ContentSideBarProps {
 
 export default function RepoSideBar(props: ContentSideBarProps) {
   const [SideBarIndex, setSideBarIndex] = useState(-1);
-  const [layout, setLayout] = useState<MenuStruct[]>([]);
   useEffect(() => {
-    setLayout(props.sublayouts);
     const sideIndex = localStorage.getItem("SideOpenIndex");
     if (sideIndex) {
       const data = JSON.parse(sideIndex);
+      console.log("data index is:",data)
       setSideBarIndex(data);
     }
   }, []);
@@ -32,7 +31,7 @@ export default function RepoSideBar(props: ContentSideBarProps) {
       <div className="-ml-2 md:-ml-4">
         <SubMenu
           prefix={"/docs/"}
-          menus={layout}
+          menus={props.sublayouts}
           layer={1}
           offset={0}
           SideBarIndex={SideBarIndex}
