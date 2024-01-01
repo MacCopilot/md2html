@@ -33,8 +33,8 @@ export default function NavBar(props: NavBarProps) {
             height={36}
           />
           <p className="font-bold text-xl md:text-2xl">
-            Lin
-            <span className="text-blue-500 dark:text-blue-400">WIKI</span>
+            MD
+            <span className="text-blue-500 dark:text-blue-400">Lite</span>
           </p>
         </Link>
       </div>

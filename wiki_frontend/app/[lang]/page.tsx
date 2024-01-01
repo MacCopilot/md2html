@@ -146,7 +146,7 @@ export default async function Home({
               </div>
               <a
                 className="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-indigo-50 text-indigo-600 hover:bg-indigo-200 hover:text-indigo-700 focus:ring-indigo-500 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500 mt-8"
-                href="https://github.com/zdlpsina/aiwiki"
+                href="https://zizdlp.com"
               >
                 {dictionary["home-page"].learnMore}
                 <span className="sr-only">, responsive design</span>
@@ -215,7 +215,7 @@ export default async function Home({
               </p>
               <a
                 className="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500 mt-8"
-                href="https://github.com/zdlpsina/aiwiki"
+                href="https://zizdlp.com"
               >
                 {dictionary["home-page"].learnMore}
                 <span className="sr-only">, dark mode</span>
@@ -393,9 +393,9 @@ export default async function Home({
                 </Link>
                 <Link href="/" className="flex-col items-center">
                   <h1 className="font-bold text-xl md:text-2xl dark:text-slate-50 cursor-pointer px-4">
-                    Lin
+                    MD
                     <span className="text-blue-500 dark:text-blue-400">
-                      WIKI
+                      Lite
                     </span>
                   </h1>
                   <span className="font-sm px-4">

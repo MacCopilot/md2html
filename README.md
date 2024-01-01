@@ -1,34 +1,72 @@
-# MarkRepoLite
+<p align="center">
+  <a href="https://www.zizdlp.com" aligin="center" style="flex" >
+      <img src="/wiki_frontend/public/logo.png" width="60" height="60"/>
+  </a>
+</p>
 
-> **Mrakdown Repo Host List** 有组织的渲染markdown仓库成优美的网页
+<p align="center">
+  A Full-Stack Markdown Repository Documentation Viewer System
+</p>
 
-功能：给定一个markdonw repo 路径，给定一个渲染结果输出路径，然后后端将渲染html结果存到渲染路径，并开启server，前端输出html repo
-# 如何使用
+[English](README.md)
 
-### A.Dev Mode
+------
 
-#### 后端
-依赖：golang
-路径修改wiki_backend/app.env
+MDLite: A Full-Stack Markdown Online Viewing System
+
+## 安装
+
+### A.本地测试版
+
+The backend is built using Golang, and the frontend is developed with Next.js. Therefore, the following dependencies are required:
+
+- golang
+- nodejs
+
+#### how to install
+
+
+##### Backend
+Dependencies:golang
+Modify the path in wiki_backend/app.env
 ```shell
 cd wiki_backend
 go mod tidy
 make server
 ```
 
-#### 前端
-依赖：nodejs
+##### Frontend
+Dependencies:nodejs
 ```shell
 cd wiki_frontend
 npm install
 npm run dev
 ```
 
-#### B.Prod Mode
-依赖：docker&docker compose
-backend路径修改dev-docker-compose.yaml 中volumes
+
+### B.Prod
+
+To install MDLite, you need to first install Docker & Docker Compose. If you wish to use the make command, you also need to install make.
+
+### 2. Parameter Configuration
+
+Modify the volumes section in dev-docker-compose.yaml, where "./src" is the path to the markdown repository, and "./des" is the temporary file path.
 ```shell
-make build_backend
-make build_frontend
-make run_compose
+volumes:
+  - ./src:/tmp/src
+  - ./des:/tmp/des
 ```
+
+
+### 3.install
+
+Local Testing: Execute the command：`make run_compose`。
+
+## Visual Effects / Screenshots
+demo:https://zizdlp.com
+![](./wiki_frontend/public/dark_head.png)
+![](./wiki_frontend/public/light_head.png)
+![](./wiki_frontend/public/dark_mobile.png)
+![](./wiki_frontend/public/light_mobile.png)
+![](./wiki_frontend/public/dark_mobile_2.png)
+![](./wiki_frontend/public/light_mobile_2.png)
