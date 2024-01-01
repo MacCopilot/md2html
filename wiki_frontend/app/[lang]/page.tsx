@@ -13,7 +13,7 @@ export default async function Home({
   return (
     <div>
       <div className="fixed stars"></div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden pt-20">
         <div className="mx-3 md:mx-4 sm:px-6 md:px-8">
           <header className="overflow-hidden pt-8 pb-24 text-slate-600 dark:text-slate-400 lg:py-16">
             <div className="absolute z-20 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
@@ -361,17 +361,17 @@ export default async function Home({
                       <li>
                         <a
                           className="hover:text-slate-900 dark:hover:text-slate-300"
-                          href="https://github.com/zdlpsina/zizdlp"
+                          href="https://linchat.zizdlp.com"
                         >
-                          AIWIKI APP
+                          LinChat APP
                         </a>
                       </li>
                       <li>
                         <a
                           className="hover:text-slate-900 dark:hover:text-slate-300"
-                          href="https://github.com/zdlpsina/zizdlp"
+                          href="https://linchat.zizdlp.com"
                         >
-                          AIWIKI
+                          Linchat
                         </a>
                       </li>
                     </ul>
@@ -393,7 +393,7 @@ export default async function Home({
                 </Link>
                 <Link href="/" className="flex-col items-center">
                   <h1 className="font-bold text-xl md:text-2xl dark:text-slate-50 cursor-pointer px-4">
-                    AI
+                    Lin
                     <span className="text-blue-500 dark:text-blue-400">
                       WIKI
                     </span>
@@ -401,9 +401,6 @@ export default async function Home({
                   <span className="font-sm px-4">
                     {dictionary["home-page"].rightRes}
                   </span>
-                </Link>
-                <Link href="https://beian.miit.gov.cn/" className="flex-col items-center">
-                  ©2023 zizdlp.com 版权所有 豫ICP备2022029046号-1
                 </Link>
               </div>
             </div>

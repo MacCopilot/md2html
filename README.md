@@ -19,7 +19,7 @@ make server
 #### 前端
 依赖：nodejs
 ```shell
-cd wiki_fronted
+cd wiki_frontend
 npm install
 npm run dev
 ```
@@ -29,6 +29,6 @@ npm run dev
 backend路径修改dev-docker-compose.yaml 中volumes
 ```shell
 make build_backend
-make build_fronted
+make build_frontend
 make run_compose
 ```

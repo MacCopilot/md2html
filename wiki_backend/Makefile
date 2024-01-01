@@ -9,4 +9,4 @@ monitor:
 	go run cmd/monitor/main.go src des
 
 test_convert:
-	go run cmd/test_convert/main.go ../src/数据库/事务与隔离层级.md ../des/数据库/事务与隔离层级.html
+	go run cmd/test_convert/main.go ../src/大模型/GPT.md ../des/大模型/GPT.html
