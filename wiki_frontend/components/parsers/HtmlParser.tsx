@@ -35,7 +35,6 @@ const parseHTMLString = (
   const doc = parser.parseFromString(htmlString, "text/html");
   var tag_id = 0;
   const processNode = (node: Node): React.ReactNode => {
-
     if (node instanceof window.Element) {
       const tagName = node.tagName.toUpperCase();
       const idAttribute = node.getAttribute("id");
@@ -141,8 +140,12 @@ const parseHTMLString = (
           </pre>
         );
       } else if (tagName === "HR") {
+        const randomKey = Math.random().toString(36).substring(7);
         return (
-          <div className="border-t border-slate-300 dark:border-slate-600" />
+          <div
+            key={randomKey}
+            className="border-t border-slate-300 dark:border-slate-600"
+          />
         );
       } else if (tagName === "UL") {
         const randomKey = Math.random().toString(36).substring(7);
@@ -181,9 +184,7 @@ const parseHTMLString = (
               {Array.from(node.childNodes).map(processNode)}
             </div>
           );
-        }
-
-        if (classAttribute === "adm-title") {
+        } else if (classAttribute === "adm-title") {
           type ParentType = "note" | "warning" | "info" | "tip" | "error";
           let parentType: ParentType = "note"; // or "warning", "info", "tip", "error"
 
@@ -263,18 +264,14 @@ const parseHTMLString = (
               </p>
             </div>
           );
-        }
-
-        if (classAttribute === "adm-body") {
+        } else if (classAttribute === "adm-body") {
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div key={randomKey} className="p-4 overflow-x-auto">
               {Array.from(node.childNodes).map(processNode)}
             </div>
           );
-        }
-
-        if (classAttribute && classAttribute.includes("admonition")) {
+        } else if (classAttribute && classAttribute.includes("admonition")) {
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div
@@ -437,10 +434,9 @@ const parseHTMLString = (
           );
         }
       }
-    }
-    else if (node instanceof window.Text) {
+    } else if (node instanceof window.Text) {
       // 处理文本节点
-      return node.textContent
+      return node.textContent;
     } else {
       return null; // 或者其他处理逻辑
     }
