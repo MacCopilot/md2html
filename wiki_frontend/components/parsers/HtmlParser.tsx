@@ -120,12 +120,13 @@ const parseHTMLString = (
         const randomKey = Math.random().toString(36).substring(7);
         return (
           <code
+            key={randomKey}
             className="text-blue-500 dark:text-blue-300 scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto"
             {...props}
           >
             <span
               key={randomKey}
-              className="overflow-auto max-w-full whitespace-nowrap"
+              className="overflow-auto inline-grid place-items-center max-w-full whitespace-nowrap"
             >
               {Array.from(node.childNodes).map(processNode)}
             </span>
@@ -249,6 +250,7 @@ const parseHTMLString = (
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div
+              key={randomKey}
               className={`relative py-2  rounded-t-md flex items-center justify-center space-x-4 ${bg1}`}
             >
               <div
@@ -302,7 +304,10 @@ const parseHTMLString = (
       } else if (tagName === "TABLE") {
         const randomKey = Math.random().toString(36).substring(7);
         return (
-          <div className="shadow-sm scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto">
+          <div
+            key={randomKey}
+            className="shadow-sm scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto"
+          >
             <table
               key={randomKey}
               className="border-collapse table-auto w-full text-sm border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800/25"
@@ -376,7 +381,13 @@ const parseHTMLString = (
       } else if (tagName === "IMG") {
         const srcAttribute = (node as Element).getAttribute("src");
         if (srcAttribute && srcAttribute.startsWith("http")) {
-          return <img className="w-full my-4 rounded-md" src={srcAttribute} />;
+          return (
+            <img
+              key={randomKey}
+              className="w-full my-4 rounded-md"
+              src={srcAttribute}
+            />
+          );
         } else {
           return (
             <div key={randomKey}>
