@@ -12,6 +12,7 @@
     "@formatjs/intl-localematcher": "^0.5.2",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.1.1",
+    "@react-hook/media-query": "^1.1.1",
     "better-react-mathjax": "^2.0.3",
     "cheerio": "^1.0.0-rc.12",
     "html-react-parser": "^4.2.0",

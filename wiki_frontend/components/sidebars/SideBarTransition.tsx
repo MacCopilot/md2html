@@ -3,13 +3,14 @@
 import React, { useContext } from "react";
 import { SideBarContext } from "@/providers/SideBarProvider";
 import { Transition } from "@headlessui/react";
-
+import { useMediaQuery } from '@react-hook/media-query';
 interface SideBarTransitionProps {
   children: React.ReactNode;
 }
 
 export default function SideBarTransition(props: SideBarTransitionProps) {
   const { sideBarOpen } = useContext(SideBarContext);
+  const isXlOrAbove = useMediaQuery('(min-width: 1280px)'); // Adjust the width based on your XL breakpoint
   return (
     <Transition show={sideBarOpen}>
       {/* Background overlay */}
