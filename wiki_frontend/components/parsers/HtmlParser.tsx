@@ -35,7 +35,6 @@ const parseHTMLString = (
   const doc = parser.parseFromString(htmlString, "text/html");
   var tag_id = 0;
   const processNode = (node: Node): React.ReactNode => {
-
     if (node instanceof window.Element) {
       const tagName = node.tagName.toUpperCase();
       const idAttribute = node.getAttribute("id");
@@ -121,12 +120,13 @@ const parseHTMLString = (
         const randomKey = Math.random().toString(36).substring(7);
         return (
           <code
+            key={randomKey}
             className="text-blue-500 dark:text-blue-300 scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto"
             {...props}
           >
             <span
               key={randomKey}
-              className="overflow-auto max-w-full whitespace-nowrap"
+              className="overflow-auto inline-grid place-items-center max-w-full whitespace-nowrap"
             >
               {Array.from(node.childNodes).map(processNode)}
             </span>
@@ -141,8 +141,12 @@ const parseHTMLString = (
           </pre>
         );
       } else if (tagName === "HR") {
+        const randomKey = Math.random().toString(36).substring(7);
         return (
-          <div className="border-t border-slate-300 dark:border-slate-600" />
+          <div
+            key={randomKey}
+            className="border-t border-slate-300 dark:border-slate-600"
+          />
         );
       } else if (tagName === "UL") {
         const randomKey = Math.random().toString(36).substring(7);
@@ -181,9 +185,7 @@ const parseHTMLString = (
               {Array.from(node.childNodes).map(processNode)}
             </div>
           );
-        }
-
-        if (classAttribute === "adm-title") {
+        } else if (classAttribute === "adm-title") {
           type ParentType = "note" | "warning" | "info" | "tip" | "error";
           let parentType: ParentType = "note"; // or "warning", "info", "tip", "error"
 
@@ -248,6 +250,7 @@ const parseHTMLString = (
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div
+              key={randomKey}
               className={`relative py-2  rounded-t-md flex items-center justify-center space-x-4 ${bg1}`}
             >
               <div
@@ -263,18 +266,14 @@ const parseHTMLString = (
               </p>
             </div>
           );
-        }
-
-        if (classAttribute === "adm-body") {
+        } else if (classAttribute === "adm-body") {
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div key={randomKey} className="p-4 overflow-x-auto">
               {Array.from(node.childNodes).map(processNode)}
             </div>
           );
-        }
-
-        if (classAttribute && classAttribute.includes("admonition")) {
+        } else if (classAttribute && classAttribute.includes("admonition")) {
           const randomKey = Math.random().toString(36).substring(7);
           return (
             <div
@@ -305,7 +304,10 @@ const parseHTMLString = (
       } else if (tagName === "TABLE") {
         const randomKey = Math.random().toString(36).substring(7);
         return (
-          <div className="shadow-sm scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto">
+          <div
+            key={randomKey}
+            className="shadow-sm scrollbar-thin  scrollbar-thumb-rounded-md scrollbar-track-rounded-md overflow-x-auto"
+          >
             <table
               key={randomKey}
               className="border-collapse table-auto w-full text-sm border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800/25"
@@ -379,7 +381,13 @@ const parseHTMLString = (
       } else if (tagName === "IMG") {
         const srcAttribute = (node as Element).getAttribute("src");
         if (srcAttribute && srcAttribute.startsWith("http")) {
-          return <img className="w-full my-4 rounded-md" src={srcAttribute} />;
+          return (
+            <img
+              key={randomKey}
+              className="w-full my-4 rounded-md"
+              src={srcAttribute}
+            />
+          );
         } else {
           return (
             <div key={randomKey}>
@@ -437,10 +445,9 @@ const parseHTMLString = (
           );
         }
       }
-    }
-    else if (node instanceof window.Text) {
+    } else if (node instanceof window.Text) {
       // 处理文本节点
-      return node.textContent
+      return node.textContent;
     } else {
       return null; // 或者其他处理逻辑
     }

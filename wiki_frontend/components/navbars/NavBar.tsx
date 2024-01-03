@@ -20,7 +20,8 @@ export default function NavBar(props: NavBarProps) {
         "
     >
       <div className="flex flex-row items-center md:pl-4 md:pr-3.5">
-        <SideBarToggle />
+        <div className="xl:hidden"><SideBarToggle /></div>
+        
         <Link
           href={`/${props.lang}`}
           className="flex items-center justify-center space-x-2 overflow-hidden cursor-pointer"
