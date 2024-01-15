@@ -8,6 +8,7 @@ import BackendImage from "./BackendImage";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { MdOutlineTipsAndUpdates, MdErrorOutline } from "react-icons/md";
 import { AiFillInfoCircle, AiFillWarning, AiFillCode } from "react-icons/ai";
+import MathRenderer from "@/components/parsers/MathRenderer"
 import Link from "next/link";
 interface Attribute {
   name: string;

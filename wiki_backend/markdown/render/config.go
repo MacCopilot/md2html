@@ -6,9 +6,8 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	html "github.com/zizdlp/md2html/markdown/chromahtml"
-
-	mathjax "github.com/litao91/goldmark-mathjax"
 	highlighting "github.com/zizdlp/md2html/markdown/highlight"
+	"github.com/zizdlp/md2html/markdown/katex"
 	"go.abhg.dev/goldmark/toc"
 )
 
@@ -41,7 +40,9 @@ func GetMarkdownConfig() goldmark.Markdown {
 				),
 			),
 		),
-		goldmark.WithExtensions(mathjax.MathJax),
+		// goldmark.WithExtensions(mathjax.MathJax),
+		// goldmark.WithExtensions(&qjskatex.Extension{}),
+		goldmark.WithExtensions(&katex.Extender{}),
 	)
 	return markdown
 }
